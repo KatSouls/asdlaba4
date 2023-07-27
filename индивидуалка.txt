@@ -1,0 +1,43 @@
+#include <stdio.h>
+#include <iostream>
+#include <conio.h>
+
+using namespace std;
+
+int main() {
+    setlocale(0, "rus");
+    const int size = 10;
+    int array[size], i, tmp, flag;
+    int elements[size];
+
+    for (i = 0; i < size; i++)
+        elements[i] = i;
+
+    cout << "введите 10 элементов: ";
+    for (i = 0; i < size; i++) {
+        cin >> array[i];
+    }
+
+    do {
+        flag = 0;
+        for (i = 1; i < size; i++)
+            if (array[i - 1] > array[i]) {
+                tmp = array[i];
+                array[i] = array[i - 1];
+                array[i - 1] = tmp;
+
+                tmp = elements[i];
+                elements[i] = elements[i - 1];
+                elements[i - 1] = tmp;
+
+                flag = 1;
+            }
+    } while (flag);
+
+    cout<<"отсортерованное:";
+
+    for (i = 0; i < size; i++)
+        cout << array[i] << " ";
+
+    return 0;
+}
